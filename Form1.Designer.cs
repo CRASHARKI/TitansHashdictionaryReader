@@ -175,6 +175,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Titans Hashdictionary Reader";
+            this.Icon = global::TitansHashdictionaryReader.Properties.Resources.AppIcon;
             this.ResumeLayout(false);
             this.PerformLayout();
 
