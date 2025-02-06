@@ -1,0 +1,10 @@
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\bin\Release\TitansHashdictionaryReader.exe.config
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\bin\Release\TitansHashdictionaryReader.exe
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\bin\Release\TitansHashdictionaryReader.pdb
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.csproj.AssemblyReference.cache
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.Form1.resources
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.Properties.Resources.resources
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.csproj.GenerateResource.cache
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.csproj.CoreCompileInputs.cache
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.exe
+K:\Proyectos\Titans Hashdictionary Reader\TitansHashdictionaryReader\obj\Release\TitansHashdictionaryReader.pdb
