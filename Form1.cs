@@ -17,6 +17,7 @@ namespace TitansHashdictionaryReader
     public partial class Form1 : Form
     {
         private string route;
+        private string routeHash;
         private int success;
         private int failed;
         private int notFound;
@@ -43,6 +44,15 @@ namespace TitansHashdictionaryReader
             StartButton.Enabled = false;
 
             route = RouteTextBox.Text;
+            if (!route.EndsWith(".txt"))
+            {
+                routeHash = route + "\\hashdictionary.txt";
+            }
+            else
+            {
+                routeHash = route;
+                route = Path.GetDirectoryName(routeHash);
+            }
 
             progressBar.Value = 0;
             ConsoleTextBox.Text = string.Empty;
@@ -58,11 +68,18 @@ namespace TitansHashdictionaryReader
 
             try
             {
-                Tool();
+                if (radioDefault.Checked || radioDelete.Checked)
+                {
+                    Tool();
+                }
+                else if (radioDuplicates.Checked)
+                {
+                    Tool2();
+                }
             }
             catch (Exception ex)
             {
-                ConsoleTextBox.AppendText("Something went wrong. Make sure you are selecting the directory with the extracted content and a valid hashdictionary.txt before starting.");
+                ConsoleTextBox.AppendText("Something went wrong. Make sure you are selecting the directory with the extracted content and/or a valid hashdictionary.txt before starting.");
                 ConsoleTextBox.AppendText(Environment.NewLine);
                 ConsoleTextBox.AppendText("Error: " + ex.Message);
                 ConsoleTextBox.AppendText(Environment.NewLine);
@@ -75,14 +92,14 @@ namespace TitansHashdictionaryReader
 
         private void Tool()
         {
-            IEnumerable<string> lines = File.ReadLines(route + "\\hashdictionary.txt");
+            IEnumerable<string> lines = File.ReadLines(routeHash);
             progressBar.Maximum = lines.Count();
             string routeFinal = route + "\\RESULTS";
             Directory.CreateDirectory(routeFinal);
             foreach (string line in lines)
             {
                 string[] parts = line.Split(' ');
-                string[] files = Directory.GetFiles(route, "*.*", SearchOption.AllDirectories).Where(w => Path.GetFileName(w).StartsWith(parts[1])).ToArray();
+                string[] files = Directory.GetFiles(route, "*.*", SearchOption.AllDirectories).Where(w => Path.GetFileNameWithoutExtension(w) == parts[1]).ToArray();
 
                 if (files.Any())
                 {
@@ -95,7 +112,17 @@ namespace TitansHashdictionaryReader
                         {
                             File.Copy(files[0], targetPath, false);
 
-                            ConsoleTextBox.AppendText(line + " - SUCCESS");
+                            if (radioDelete.Checked)
+                                File.Delete(files[0]);
+
+                            if (radioDefault.Checked)
+                            {
+                                ConsoleTextBox.AppendText(line + " - SUCCESS");
+                            }
+                            else if (radioDelete.Checked)
+                            {
+                                ConsoleTextBox.AppendText(line + " - SUCCESS (ORIGINAL DELETED)");
+                            }
                             ConsoleTextBox.AppendText(Environment.NewLine);
                             success++;
                         }
@@ -140,8 +167,7 @@ namespace TitansHashdictionaryReader
 
         public void Tool2()
         {
-            string filePath = route + "\\hashdictionary.txt"; // Cambia esto por la ruta de tu archivo
-            List<string> result = CheckRepeatedSecondValue(filePath);
+            List<string> result = CheckRepeatedSecondValue(routeHash);
 
             ConsoleTextBox.AppendText("Duplicate hashcodes:");
             ConsoleTextBox.AppendText(Environment.NewLine);
@@ -150,6 +176,9 @@ namespace TitansHashdictionaryReader
                 ConsoleTextBox.AppendText(line);
                 ConsoleTextBox.AppendText(Environment.NewLine);
             }
+            TotalLabel.Text = "TOTAL: " + result.Count();
+            ConsoleTextBox.AppendText(Environment.NewLine);
+            ConsoleTextBox.AppendText("--Process finished--");
         }
 
         public List<string> CheckRepeatedSecondValue(string filePath)

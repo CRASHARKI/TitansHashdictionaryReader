@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.RouteTextBox = new System.Windows.Forms.TextBox();
             this.RouteSearchButton = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -39,6 +40,9 @@
             this.AlreadyExistsLabel = new System.Windows.Forms.Label();
             this.NotFoundLabel = new System.Windows.Forms.Label();
             this.TotalLabel = new System.Windows.Forms.Label();
+            this.radioDefault = new System.Windows.Forms.RadioButton();
+            this.radioDelete = new System.Windows.Forms.RadioButton();
+            this.radioDuplicates = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // RouteTextBox
@@ -87,16 +91,14 @@
             this.InstructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InstructionsLabel.Location = new System.Drawing.Point(13, 79);
             this.InstructionsLabel.Name = "InstructionsLabel";
-            this.InstructionsLabel.Size = new System.Drawing.Size(775, 48);
+            this.InstructionsLabel.Size = new System.Drawing.Size(775, 61);
             this.InstructionsLabel.TabIndex = 4;
-            this.InstructionsLabel.Text = "Instructions: Place hashdictionary.txt on the same folder where you have extracte" +
-    "d the content from default.rcf, place that route in the text box above and press" +
-    " Start.";
+            this.InstructionsLabel.Text = resources.GetString("InstructionsLabel.Text");
             // 
             // ConsoleTextBox
             // 
             this.ConsoleTextBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConsoleTextBox.Location = new System.Drawing.Point(13, 131);
+            this.ConsoleTextBox.Location = new System.Drawing.Point(13, 173);
             this.ConsoleTextBox.Multiline = true;
             this.ConsoleTextBox.Name = "ConsoleTextBox";
             this.ConsoleTextBox.ReadOnly = true;
@@ -108,7 +110,7 @@
             // 
             this.SuccessLabel.AutoSize = true;
             this.SuccessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuccessLabel.Location = new System.Drawing.Point(13, 259);
+            this.SuccessLabel.Location = new System.Drawing.Point(13, 301);
             this.SuccessLabel.Name = "SuccessLabel";
             this.SuccessLabel.Size = new System.Drawing.Size(104, 20);
             this.SuccessLabel.TabIndex = 6;
@@ -118,7 +120,7 @@
             // 
             this.FailedLabel.AutoSize = true;
             this.FailedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FailedLabel.Location = new System.Drawing.Point(163, 259);
+            this.FailedLabel.Location = new System.Drawing.Point(163, 301);
             this.FailedLabel.Name = "FailedLabel";
             this.FailedLabel.Size = new System.Drawing.Size(84, 20);
             this.FailedLabel.TabIndex = 7;
@@ -128,7 +130,7 @@
             // 
             this.AlreadyExistsLabel.AutoSize = true;
             this.AlreadyExistsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AlreadyExistsLabel.Location = new System.Drawing.Point(458, 259);
+            this.AlreadyExistsLabel.Location = new System.Drawing.Point(458, 301);
             this.AlreadyExistsLabel.Name = "AlreadyExistsLabel";
             this.AlreadyExistsLabel.Size = new System.Drawing.Size(165, 20);
             this.AlreadyExistsLabel.TabIndex = 8;
@@ -138,7 +140,7 @@
             // 
             this.NotFoundLabel.AutoSize = true;
             this.NotFoundLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotFoundLabel.Location = new System.Drawing.Point(293, 259);
+            this.NotFoundLabel.Location = new System.Drawing.Point(293, 301);
             this.NotFoundLabel.Name = "NotFoundLabel";
             this.NotFoundLabel.Size = new System.Drawing.Size(119, 20);
             this.NotFoundLabel.TabIndex = 9;
@@ -148,18 +150,56 @@
             // 
             this.TotalLabel.AutoSize = true;
             this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalLabel.Location = new System.Drawing.Point(669, 259);
+            this.TotalLabel.Location = new System.Drawing.Point(669, 301);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(76, 20);
             this.TotalLabel.TabIndex = 10;
             this.TotalLabel.Text = "TOTAL: 0";
+            // 
+            // radioDefault
+            // 
+            this.radioDefault.AutoSize = true;
+            this.radioDefault.Checked = true;
+            this.radioDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radioDefault.Location = new System.Drawing.Point(13, 143);
+            this.radioDefault.Name = "radioDefault";
+            this.radioDefault.Size = new System.Drawing.Size(182, 24);
+            this.radioDefault.TabIndex = 11;
+            this.radioDefault.TabStop = true;
+            this.radioDefault.Text = "Process files (Default)";
+            this.radioDefault.UseVisualStyleBackColor = true;
+            // 
+            // radioDelete
+            // 
+            this.radioDelete.AutoSize = true;
+            this.radioDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radioDelete.Location = new System.Drawing.Point(227, 143);
+            this.radioDelete.Name = "radioDelete";
+            this.radioDelete.Size = new System.Drawing.Size(257, 24);
+            this.radioDelete.TabIndex = 12;
+            this.radioDelete.Text = "Process files and delete originals";
+            this.radioDelete.UseVisualStyleBackColor = true;
+            // 
+            // radioDuplicates
+            // 
+            this.radioDuplicates.AutoSize = true;
+            this.radioDuplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radioDuplicates.Location = new System.Drawing.Point(516, 143);
+            this.radioDuplicates.Name = "radioDuplicates";
+            this.radioDuplicates.Size = new System.Drawing.Size(266, 24);
+            this.radioDuplicates.TabIndex = 13;
+            this.radioDuplicates.Text = "Find duplicates in Hash Dictionary";
+            this.radioDuplicates.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(800, 288);
+            this.ClientSize = new System.Drawing.Size(800, 331);
+            this.Controls.Add(this.radioDuplicates);
+            this.Controls.Add(this.radioDelete);
+            this.Controls.Add(this.radioDefault);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.NotFoundLabel);
             this.Controls.Add(this.AlreadyExistsLabel);
@@ -172,10 +212,10 @@
             this.Controls.Add(this.RouteSearchButton);
             this.Controls.Add(this.RouteTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = global::TitansHashdictionaryReader.Properties.Resources.AppIcon;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Titans Hashdictionary Reader";
-            this.Icon = global::TitansHashdictionaryReader.Properties.Resources.AppIcon;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +234,9 @@
         private System.Windows.Forms.Label AlreadyExistsLabel;
         private System.Windows.Forms.Label NotFoundLabel;
         private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.RadioButton radioDefault;
+        private System.Windows.Forms.RadioButton radioDelete;
+        private System.Windows.Forms.RadioButton radioDuplicates;
     }
 }
 
