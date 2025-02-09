@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="InstructionsLabel.Text" xml:space="preserve">
-    <value>Instructions: Place hashdictionary.txt on the same folder where you have extracted the content from default.rcf, place the route to hashdictionary.txt or the folder in the text box above and press Start (You can drag and on the text box).</value>
+    <value>Instructions: Place hashdictionary.txt on the same folder where you have extracted the content from default.rcf, place the route to hashdictionary.txt or the folder in the text box above and press Start (You can drag and drop on the text box).</value>
   </data>
 </root>

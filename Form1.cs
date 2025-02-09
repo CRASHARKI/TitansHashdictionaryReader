@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.LinkLabel;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TitansHashdictionaryReader
 {
@@ -18,6 +11,8 @@ namespace TitansHashdictionaryReader
     {
         private string route;
         private string routeHash;
+        List<string> lines;
+        List<string> filesLibrary;
         private int success;
         private int failed;
         private int notFound;
@@ -92,60 +87,37 @@ namespace TitansHashdictionaryReader
 
         private void Tool()
         {
-            IEnumerable<string> lines = File.ReadLines(routeHash);
+            lines = File.ReadLines(routeHash).ToList();
             progressBar.Maximum = lines.Count();
             string routeFinal = route + "\\RESULTS";
             Directory.CreateDirectory(routeFinal);
-            foreach (string line in lines)
+            filesLibrary = Directory.GetFiles(route, "*.*", SearchOption.AllDirectories).ToList();
+            ConsoleTextBox.AppendText("Searching in original locations:");
+            ConsoleTextBox.AppendText(Environment.NewLine);
+            foreach (string line in lines.ToList())
             {
                 string[] parts = line.Split(' ');
-                string[] files = Directory.GetFiles(route, "*.*", SearchOption.AllDirectories).Where(w => Path.GetFileNameWithoutExtension(w) == parts[1]).ToArray();
+                string expectedRoute = route + "\\" + Path.GetDirectoryName(parts[0].Length > 259 ? parts[0].Substring(0, 258) : parts[0]);
+                string file = null;
+                file = filesLibrary.Where(w => Path.GetDirectoryName(w) == expectedRoute && Path.GetFileNameWithoutExtension(w) == parts[1]).FirstOrDefault();
 
-                if (files.Any())
+                if (file != null)
                 {
-                    try
-                    {
-                        string targetPath = routeFinal + "\\" + parts[0];
-                        if (!Directory.Exists(Path.GetDirectoryName(targetPath)))
-                            Directory.CreateDirectory(Path.GetDirectoryName(targetPath));
-                        if (!File.Exists(targetPath))
-                        {
-                            File.Copy(files[0], targetPath, false);
+                    ProcessFile(routeFinal, line, parts, file);
+                    progressBar.Value += 1;
+                }
+            }
+            ConsoleTextBox.AppendText(Environment.NewLine);
+            ConsoleTextBox.AppendText("Searching in remaining locations:");
+            ConsoleTextBox.AppendText(Environment.NewLine);
+            foreach (string line in lines.ToList())
+            {
+                string[] parts = line.Split(' ');
+                string file = filesLibrary.Where(w => Path.GetFileNameWithoutExtension(w) == parts[1]).FirstOrDefault();
 
-                            if (radioDelete.Checked)
-                                File.Delete(files[0]);
-
-                            if (radioDefault.Checked)
-                            {
-                                ConsoleTextBox.AppendText(line + " - SUCCESS");
-                            }
-                            else if (radioDelete.Checked)
-                            {
-                                ConsoleTextBox.AppendText(line + " - SUCCESS (ORIGINAL DELETED)");
-                            }
-                            ConsoleTextBox.AppendText(Environment.NewLine);
-                            success++;
-                        }
-                        else
-                        {
-                            ConsoleTextBox.AppendText(line + " - ALREADY EXISTS");
-                            ConsoleTextBox.AppendText(Environment.NewLine);
-                            alreadyExists++;
-                        }
-                    }
-                    catch (DirectoryNotFoundException)
-                    {
-                        ConsoleTextBox.AppendText(line + " - FAILED (DESTINATION NAME TOO LONG)");
-                        ConsoleTextBox.AppendText(Environment.NewLine);
-                        failed++;
-                    }
-                    catch (Exception ex)
-                    {
-                        Type exception = ex.GetType();
-                        ConsoleTextBox.AppendText(line + " - FAILED (UNKNOWN ERROR: " + ex + ")");
-                        ConsoleTextBox.AppendText(Environment.NewLine);
-                        failed++;
-                    }
+                if (file != null)
+                {
+                    ProcessFile(routeFinal, line, parts, file);
                 }
                 else
                 {
@@ -159,10 +131,60 @@ namespace TitansHashdictionaryReader
             FailedLabel.Text = "FAILED: " + failed;
             NotFoundLabel.Text = "NOT FOUND: " + notFound;
             AlreadyExistsLabel.Text = "ALREADY EXISTS: " + alreadyExists;
-            TotalLabel.Text = "TOTAL: " + lines.Count();
+            TotalLabel.Text = "TOTAL: " + progressBar.Maximum;
 
             ConsoleTextBox.AppendText(Environment.NewLine);
             ConsoleTextBox.AppendText("--Process finished--");
+        }
+
+        public void ProcessFile(string routeFinal, string line, string[] parts, string file)
+        {
+            try
+            {
+                string targetPath = routeFinal + "\\" + parts[0];
+                if (!Directory.Exists(Path.GetDirectoryName(targetPath)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(targetPath));
+                if (!File.Exists(targetPath))
+                {
+                    File.Copy(file, targetPath, false);
+
+                    filesLibrary.Remove(file);
+                    lines.Remove(line);
+
+                    if (radioDelete.Checked)
+                        File.Delete(file);
+
+                    if (radioDefault.Checked)
+                    {
+                        ConsoleTextBox.AppendText(line + " - SUCCESS");
+                    }
+                    else if (radioDelete.Checked)
+                    {
+                        ConsoleTextBox.AppendText(line + " - SUCCESS (ORIGINAL DELETED)");
+                    }
+                    ConsoleTextBox.AppendText(Environment.NewLine);
+                    success++;
+                }
+                else
+                {
+                    ConsoleTextBox.AppendText(line + " - ALREADY EXISTS");
+                    ConsoleTextBox.AppendText(Environment.NewLine);
+                    alreadyExists++;
+                }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                ConsoleTextBox.AppendText(line + " - FAILED (DESTINATION NAME TOO LONG)");
+                ConsoleTextBox.AppendText(Environment.NewLine);
+                failed++;
+            }
+            catch (Exception ex)
+            {
+                Type exception = ex.GetType();
+                ConsoleTextBox.AppendText(line + " - FAILED (UNKNOWN ERROR: " + ex + ")");
+                ConsoleTextBox.AppendText(Environment.NewLine);
+                failed++;
+            }
         }
 
         public void Tool2()

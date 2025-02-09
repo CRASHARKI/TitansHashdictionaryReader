@@ -3,19 +3,23 @@
   "WorkspaceRootPath": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|k:\\proyectos\\titans hashdictionary reader\\titanshashdictionaryreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|k:\\proyectos\\titans hashdictionary reader\\titanshashdictionaryreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|TitansHashdictionaryReader||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B037934-7A6A-4A5F-92FC-9FD7EF43AB11}|TitansHashdictionaryReader.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,11 +29,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "App.config",
+              "DocumentMoniker": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-02-07T18:03:31.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\Properties\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
@@ -41,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "TitansHashdictionaryReader",
               "DocumentMoniker": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\TitansHashdictionaryReader.csproj",
               "RelativeDocumentMoniker": "TitansHashdictionaryReader.csproj",
@@ -52,27 +69,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAYwKcAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAkwIUAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-01T14:59:00.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "K:\\Proyectos\\Titans Hashdictionary Reader\\TitansHashdictionaryReader\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:58:17.52Z"
+              "WhenOpened": "2025-02-01T14:58:17.52Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }
